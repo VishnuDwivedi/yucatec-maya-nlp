@@ -1,0 +1,66 @@
+{
+  "mBERT": {
+    "yua_maya_cplm": {
+      "n_sentences": 500,
+      "total_words": 16198,
+      "total_tokens": 50025,
+      "tokens_per_word": 3.088
+    },
+    "spa_cplm": {
+      "n_sentences": 500,
+      "total_words": 13828,
+      "total_tokens": 20618,
+      "tokens_per_word": 1.491
+    },
+    "eng_flores200": {
+      "n_sentences": 500,
+      "total_words": 10869,
+      "total_tokens": 14383,
+      "tokens_per_word": 1.323
+    },
+    "hin_flores200": {
+      "n_sentences": 500,
+      "total_words": 12698,
+      "total_tokens": 25541,
+      "tokens_per_word": 2.011
+    },
+    "spa_flores200": {
+      "n_sentences": 500,
+      "total_words": 13029,
+      "total_tokens": 18602,
+      "tokens_per_word": 1.428
+    }
+  },
+  "mT5": {
+    "yua_maya_cplm": {
+      "n_sentences": 500,
+      "total_words": 16198,
+      "total_tokens": 51644,
+      "tokens_per_word": 3.188
+    },
+    "spa_cplm": {
+      "n_sentences": 500,
+      "total_words": 13828,
+      "total_tokens": 24396,
+      "tokens_per_word": 1.764
+    },
+    "eng_flores200": {
+      "n_sentences": 500,
+      "total_words": 10869,
+      "total_tokens": 16909,
+      "tokens_per_word": 1.556
+    },
+    "hin_flores200": {
+      "n_sentences": 500,
+      "total_words": 12698,
+      "total_tokens": 26446,
+      "tokens_per_word": 2.083
+    },
+    "spa_flores200": {
+      "n_sentences": 500,
+      "total_words": 13029,
+      "total_tokens": 21981,
+      "tokens_per_word": 1.687
+    }
+  }
+}
