@@ -95,7 +95,6 @@ def main():
         predict_with_generate=True,
         generation_max_length=MAX_TGT_LEN,
         bf16=True,
-        warmup_ratio=0.1,
         logging_steps=50,
         save_total_limit=1,
         load_best_model_at_end=True,
