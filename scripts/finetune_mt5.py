@@ -108,7 +108,7 @@ def main():
         train_dataset=train_tok,
         eval_dataset=dev_tok,
         data_collator=collator,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         compute_metrics=compute_metrics,
     )
 
