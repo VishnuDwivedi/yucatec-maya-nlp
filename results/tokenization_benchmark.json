@@ -12,6 +12,18 @@
       "total_tokens": 20618,
       "tokens_per_word": 1.491
     },
+    "yua_maya_ccc": {
+      "n_sentences": 500,
+      "total_words": 2833,
+      "total_tokens": 8103,
+      "tokens_per_word": 2.86
+    },
+    "spa_ccc": {
+      "n_sentences": 500,
+      "total_words": 3046,
+      "total_tokens": 4042,
+      "tokens_per_word": 1.327
+    },
     "eng_flores200": {
       "n_sentences": 500,
       "total_words": 10869,
@@ -29,6 +41,18 @@
       "total_words": 13029,
       "total_tokens": 18602,
       "tokens_per_word": 1.428
+    },
+    "yua_maya_cplm_normalized": {
+      "n_sentences": 500,
+      "total_words": 16198,
+      "total_tokens": 50023,
+      "tokens_per_word": 3.088
+    },
+    "yua_maya_ccc_normalized": {
+      "n_sentences": 500,
+      "total_words": 2833,
+      "total_tokens": 8103,
+      "tokens_per_word": 2.86
     }
   },
   "mT5": {
@@ -43,6 +67,18 @@
       "total_words": 13828,
       "total_tokens": 24396,
       "tokens_per_word": 1.764
+    },
+    "yua_maya_ccc": {
+      "n_sentences": 500,
+      "total_words": 2833,
+      "total_tokens": 8254,
+      "tokens_per_word": 2.914
+    },
+    "spa_ccc": {
+      "n_sentences": 500,
+      "total_words": 3046,
+      "total_tokens": 4568,
+      "tokens_per_word": 1.5
     },
     "eng_flores200": {
       "n_sentences": 500,
@@ -61,6 +97,18 @@
       "total_words": 13029,
       "total_tokens": 21981,
       "tokens_per_word": 1.687
+    },
+    "yua_maya_cplm_normalized": {
+      "n_sentences": 500,
+      "total_words": 16198,
+      "total_tokens": 51604,
+      "tokens_per_word": 3.186
+    },
+    "yua_maya_ccc_normalized": {
+      "n_sentences": 500,
+      "total_words": 2833,
+      "total_tokens": 8254,
+      "tokens_per_word": 2.914
     }
   }
 }

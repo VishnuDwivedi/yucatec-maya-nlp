@@ -3,3 +3,4 @@ __pycache__/
 .DS_Store
 node_modules/
 package-lock.json
+data/raw/maya_corpus_epigraphic/maya_corpus.db
