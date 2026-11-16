@@ -1,0 +1,10 @@
+{
+  "test_loss": 2.3532588481903076,
+  "test_bleu": 4.283006450632765,
+  "test_chrf": 21.870161118331445,
+  "test_runtime": 147.0348,
+  "test_samples_per_second": 9.209,
+  "test_steps_per_second": 0.578,
+  "epoch": 3.0,
+  "_provenance": "ASU RC sol cluster, job 1639176, single A100, mT5-small, CPLM train/test split, bf16"
+}
