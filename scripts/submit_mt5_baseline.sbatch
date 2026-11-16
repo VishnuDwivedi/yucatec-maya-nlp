@@ -12,7 +12,7 @@
 module load mamba/latest
 
 # One-time environment setup (safe to re-run; pip skips what's already installed).
-pip install --quiet --user transformers datasets evaluate sacrebleu sentencepiece accelerate
+pip install --quiet --user transformers datasets evaluate sacrebleu sentencepiece accelerate protobuf tiktoken
 
 cd "$SLURM_SUBMIT_DIR"
 python3 scripts/finetune_mt5.py --epochs 3 --batch_size 16
