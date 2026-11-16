@@ -154,7 +154,7 @@ const children = [
 
   H1("3. GitHub and Demo"),
   P("Code and data are in a GitHub repository with a README covering dependencies, dataset provenance, and exact run commands for every script referenced in this report (tokenization_benchmark.py, make_figures.py, download_flores.py). No GPU or paid API access is required to reproduce anything in this report — every result here comes from tokenizer inference on public data."),
-  P("Repository: [GitHub URL to be inserted before submission]."),
+  P("Repository: https://github.com/VishnuDwivedi/yucatec-maya-nlp"),
   P("No video demo was produced this cycle; Figure 1 and the sample-fragmentation table in Section 2.3 are the primary visual evidence of progress at this stage. A short demo (CLI run of the benchmark script end-to-end) is planned for the next checkpoint once baseline MT fine-tuning produces translation outputs worth showing."),
 
   H1("4. Team and Individual Contributions"),
