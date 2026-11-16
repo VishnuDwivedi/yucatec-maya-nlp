@@ -11,17 +11,31 @@ English.
 
 ```
 cse576/
-├── PROGRESS_REPORT.md / .docx     # mid-progress report (early version)
+├── Mid_Progress_Report.docx       # mid-progress report (Word)
+├── report_tex/                    # mid-progress report (ACL LaTeX + compiled PDF)
+│   ├── main.tex
+│   ├── main.pdf
+│   ├── custom.bib, acl.sty, acl_natbib.bst
+│   └── tokens_per_word.png
+├── PROGRESS_REPORT.md / .docx     # earlier progress snapshot
 ├── data/raw/
 │   ├── cplm_maya_spanish/         # Maya <-> Spanish parallel text (train/dev/test)
-│   └── flores200/                 # FLORES-200 devtest: English, Hindi, Spanish
+│   ├── yua_es_ccc/                # YUA-ES-CCC Maya <-> Spanish phrase pairs
+│   ├── americasnlp2024_st2/       # AmericasNLP 2024 Shared Task 2 (Maya)
+│   ├── flores200/                 # FLORES-200 devtest: English, Hindi, Spanish
+│   ├── maya_sign_catalog/         # Classic Maya glyph sign catalog
+│   └── maya_corpus_epigraphic/    # Classic Maya hieroglyphic epigraphic DB (gzipped)
 ├── scripts/
 │   ├── download_flores.py         # pulls FLORES-200 devtest sets from Meta's release
 │   ├── tokenization_benchmark.py  # computes tokens/word under mBERT and mT5
-│   └── make_figures.py            # generates the bar chart + sample fragmentation table
+│   ├── make_figures.py            # generates the bar chart + sample fragmentation table
+│   ├── orthography_normalizer.py  # glottal-stop / colonial-spelling / NFC normalization
+│   ├── finetune_mt5.py            # Baseline 2: mT5-small fine-tuning, Maya->Spanish
+│   └── submit_mt5_baseline.sbatch # Slurm batch script for ASU RC `sol`
 └── results/
     ├── tokenization_benchmark.json
     ├── sample_tokenizations.json
+    ├── mt5_maya_es_test_metrics.json  # real Baseline 2 test-set BLEU/ChrF
     └── figures/tokens_per_word.png
 ```
 
@@ -100,22 +114,45 @@ or do plain string rewriting, no model forward pass or training.
 translation and reports BLEU/ChrF on the held-out test split.
 `scripts/submit_mt5_baseline.sbatch` is a ready-to-submit Slurm job for the
 ASU RC `sol` cluster (1 GPU, `general` partition, `class` QOS, account
-`class_cse57669240fall2026`, ~3hr walltime). From this directory on `sol`:
+`class_cse57669240fall2026`, ~3hr walltime). Dependencies are pinned in the
+sbatch script itself (`transformers==4.53.2`, `datasets==4.8.4`,
+`evaluate==0.4.6`) to avoid API drift from an unpinned `pip install`. From
+this directory on `sol`:
 
 ```bash
 sbatch scripts/submit_mt5_baseline.sbatch
 ```
 
 Check status with `squeue -u $USER`; results land in
-`results/mt5_maya_es_test_metrics.json`. This has been smoke-tested locally
-(data loading + tokenization pipeline only, no actual training) but not yet
-run end-to-end on the cluster — do that before citing BLEU/ChrF numbers.
+`results/mt5_maya_es_test_metrics.json`.
+
+**This has been run end-to-end on `sol` and produced real results:**
+test loss 2.35, **BLEU 4.28**, **ChrF 21.87** (mT5-small, 3 epochs, batch
+size 16, single A100, bf16; see `results/mt5_maya_es_test_metrics.json` for
+the full output and `report_tex/main.tex` / `report_tex/main.pdf` for
+analysis). Getting a valid run required fixing three real issues along the
+way: the `transformers` `Trainer` API renaming `tokenizer=` to
+`processing_class=`; `fp16` training producing `NaN` loss on T5-family
+models (fixed by switching to `bf16`); and an unpinned `pip install`
+grabbing a newer `transformers` release that had dropped the
+`warmup_ratio` argument (fixed by pinning exact versions). All three fixes
+are already applied in `scripts/finetune_mt5.py` and
+`scripts/submit_mt5_baseline.sbatch` above.
 
 ## Status
 
-See `PROGRESS_REPORT.md` (and the fuller mid-progress submission) for the
-current phase breakdown, results, and next steps. Short version: the
-tokenization-tax hypothesis has been tested empirically (Maya sees
-~2.0–2.3x more tokens/word than English, ~1.5x more than Hindi, under both
-tokenizers); baseline MT fine-tuning, the orthography normalizer, and the
-glyph/SEETOK work are still pending.
+See `report_tex/main.pdf` (ACL-format mid-progress report) or
+`Mid_Progress_Report.docx` for the full writeup: phase breakdown, results,
+error analysis, and next steps. Short version:
+
+- **Tokenization-fertility audit:** done. Maya sees ~2.0–2.3x more
+  tokens/word than English and ~1.5x more than Hindi, under both mBERT and
+  mT5, across two Maya corpora (CPLM, legal register; YUA-ES-CCC, everyday
+  register).
+- **Orthography normalizer:** implemented (`scripts/orthography_normalizer.py`);
+  glottal-stop unification, colonial `c`/`qu`→`k` mapping, Unicode NFC.
+- **Baseline 2 (mT5 fine-tuning):** done, real results above. Low BLEU is
+  expected for this corpus size and is analyzed, not hidden, in the report.
+- **SEETOK-Maya / glyph annotation (Phase 3):** not started; data source
+  (mayacorpus.org epigraphic DB) is secured, blocked on recruiting a Maya
+  linguist/annotator.
