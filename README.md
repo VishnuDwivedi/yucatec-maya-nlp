@@ -36,6 +36,7 @@ cse576/
     ├── tokenization_benchmark.json
     ├── sample_tokenizations.json
     ├── mt5_maya_es_test_metrics.json  # real Baseline 2 test-set BLEU/ChrF
+    ├── logs/                          # raw Slurm .out logs (provenance trail)
     └── figures/tokens_per_word.png
 ```
 
@@ -137,7 +138,10 @@ models (fixed by switching to `bf16`); and an unpinned `pip install`
 grabbing a newer `transformers` release that had dropped the
 `warmup_ratio` argument (fixed by pinning exact versions). All three fixes
 are already applied in `scripts/finetune_mt5.py` and
-`scripts/submit_mt5_baseline.sbatch` above.
+`scripts/submit_mt5_baseline.sbatch` above. The raw Slurm `.out` logs for
+each of the 5 submitted jobs (including the 3 failed attempts) are kept
+under `results/logs/` as the provenance trail behind the reported numbers;
+see `results/logs/README.md` for which job ID is which.
 
 ## Status
 
