@@ -155,5 +155,4 @@ error analysis, and next steps. Short version:
 - **Baseline 2 (mT5 fine-tuning):** done, real results above. Low BLEU is
   expected for this corpus size and is analyzed, not hidden, in the report.
 - **SEETOK-Maya / glyph annotation (Phase 3):** not started; data source
-  (mayacorpus.org epigraphic DB) is secured, blocked on recruiting a Maya
-  linguist/annotator.
+  (mayacorpus.org epigraphic DB) is secured,  In conversation to get annotated data.
