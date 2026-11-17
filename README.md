@@ -77,13 +77,10 @@ cse576/
 
 ## Known issues / things to double check
 
-- Any file named `flores200/yua_Latn.dev` or `.devtest` containing the
-  literal text `404: Not Found` is a failed download placeholder, not real
-  data — Yucatec Maya genuinely is not in FLORES-200. Do not use it.
+- `flores200/yua_Latn.dev`  is a  placeholder, not real
+  data — Yucatec Maya genuinely is not in FLORES-200. .
 - The CPLM corpus used here (13,528 pairs) was obtained via a GitHub mirror,
-  not by request to the original LREC-2020 authors. If a different session
-  claims CPLM requires emailing UNAM for access, that's outdated relative to
-  this repo's actual state — the data is already here.
+  not by request to the original LREC-2020 authors.
 
 ## How to run
 
